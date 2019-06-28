@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:margin-top="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>InfoService</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- 引入 Bootstrap -->
+	<link href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
+	<link href="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+
+    <!-- 使用modal -->
+	<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
+	<script src="js/moment-with-locales.js"></script>
+	<script src="https://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+
+	<script type="text/javascript">
+		$(function () {
+			$('#datetimepicker1').datetimepicker({
+				format: 'YYYY-MM-DD',
+				locale: moment.locale('zh-cn')
+			});
+		});
+	</script>
+
+    <!-- HTML5 Shiv 和 Respond.js 用于让 IE8 支持 HTML5元素和媒体查询 -->
+    <!-- 注意： 如果通过 file://  引入 Respond.js 文件，则该文件无法起效果 -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
+    <![endif]-->
+ 
+    <!-- 整体背景 -->
+    <style type="text/css">
+        html{
+            height: 100%;
+        }
+        body{
+            background-image: url(https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1514881472495&di=d9c07e5a09dd0cf25a9bf773b5d18591&imgtype=0&src=http%3A%2F%2Fpic.58pic.com%2F58pic%2F15%2F12%2F34%2F73C58PIC8uq_1024.jpg);
+            background-repeat: no-repeat;
+            background-size: 100% 100%;
+            height: 100%;
+        }
+        .col-center-block {
+            float: none;
+            display: block;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 20%;
+            text-align: center;
+            max-width: 333px;
+        }
+        .edit {
+            margin-top: 10px;
+        }
+        .textcolor{
+           color: white;
+        }
+ 
+        /*model显示居中*/
+        .modal_wrapper{
+            display: table;
+            height: 100%;
+            margin: 0px auto;
+        }
+        .modal-dialog{
+            display: table-cell;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+<body>
+    <!-- 两个输入框 -->
+    <div class="container">
+        <div class="row row-centered">
+            <div class="col-xs-6 col-md-4 col-center-block">
+                <h1 class="textcolor">欢迎光临</h1>
+                <form action="../Module/login.php" method="post">
+                    <div class="input-group input-group-md">
+						<p style="font-size: 21px" class="text-muted">If by life you were deceived,</p>
+						<p style="font-size: 21px" class="text-primary">Don't be dismal,don't be wild!</p>
+						<p style="font-size: 21px" class="text-success">In the day of grief,be mild .</p>
+						<p style="font-size: 21px" class="text-info">Merry days will come,believe.</p>
+						<p style="font-size: 21px" class="text-warning">Heart is living in tomorrow;</p>
+						<p style="font-size: 21px" class="text-danger">Present is dejected here;</p>
+						<p style="font-size: 21px" class="text-secondary">In a moment,passes sorrow;</p>
+						<p style="font-size: 21px" class="text-dark">That which passes will be dear.</p>
+                    </div>
+                    <br/>
+                    <a type="submit" class="btn btn-primary btn-block" data-toggle="modal" data-target="#register">Click Here !</a>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- 注册窗口 -->
+    <div id="register" class="modal fade" tabindex="-1">
+        <div class="modal_wrapper">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-body">
+                        <button class="close" data-dismiss="modal">
+                            <span>×</span>
+                        </button>
+                    </div>
+                    <div class="modal-title">
+                        <h1 class="text-center">获取白马股筛选指标</h1>
+                    </div>
+                    <div class="modal-body">
+                        <form action="./search.php" method="post">
+                            <div class='input-group input-group-md date' id='datetimepicker1'>
+                                <span class="input-group-addon">
+                                    <span class="glyphicon glyphicon-calendar"></span>
+                                </span>
+                                <input type='text' class="form-control" id="re_time" name="time_info" placeholder="请选择日期" />
+                            </div>
+                            <!-- 输入姓名 -->
+                            <div class="edit input-group input-group-md">
+                            <span class="input-group-addon">
+                                <i class="glyphicon glyphicon-pencil"></i></span>
+                                <textarea class="form-control" rows="10" id="re_textarea" name="textarea_info" placeholder="请输入股票代码，一行一个，支持的代码格式（600887、000538.SZ）"></textarea>
+                            </div>
+                            <br/>
+                            <button type="Submit" class="btn btn-success btn-block" name="Submit" value="download">下载</button>
+                            <button class="btn btn-primary btn-block" data-dismiss="modal">返回</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
